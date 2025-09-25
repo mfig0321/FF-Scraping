@@ -1,13 +1,13 @@
-Team ID,Team Name,Owner,Rank,W,L,T
-1,Westchester United,santiago,10,5,8,0
-4,ALpocalypse Redux,alex,8,6,7,0
-8,The Sandusquino Clan Warriors,quino,7,7,6,0
-6,BigDicksNoWhammies,Marlone,6,7,6,0
-7,Azteks,Isaac,4,7,6,0
-3,Mobb,Charlie,9,6,7,0
-2,Chierfs,Mike,12,3,10,0
-10,General Jackson,Paul,2,8,5,0
-5,Gladiators,Javier,3,8,5,0
-9,MADTDz,Alex,1,9,4,0
-11,Balls_Deeep,Cordell,11,5,8,0
-12,Pancakers,Monica,5,7,6,0
+Owner ID,Owner,Team ID,Team Name,Rank,Wins,Losses,Ties,Final Place
+36047,santiago,1,Westchester United,10,5,8,0,10th Place
+41330,alex,4,ALpocalypse Redux,8,6,7,0,7th Place
+66048,quino,8,The Sandusquino Clan Warriors,7,7,6,0,8th Place
+108138,Marlone,6,BigDicksNoWhammies,6,7,6,0,3rd Place
+108610,Isaac,7,Azteks,4,7,6,0,1st Place
+309543,Charlie,3,Mobb,9,6,7,0,9th Place
+476752,Mike,2,Chierfs,12,3,10,0,11th Place
+668102,Paul,10,General Jackson,2,8,5,0,2nd Place
+1465323,Javier,5,Gladiators,3,8,5,0,6th Place
+1593176,Alex,9,MADTDz,1,9,4,0,4th Place
+2013324,Cordell,11,Balls_Deeep,11,5,8,0,12th Place
+2291835,Monica,12,Pancakers,5,7,6,0,5th Place

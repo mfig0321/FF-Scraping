@@ -6,7 +6,7 @@ import re
 import requests
 leagueID = str(943463)
 league_name = 'Out of Your League'
-season = input("Season: ")
+
 
 class Team:
     def __init__(self, team_id):
@@ -20,20 +20,7 @@ class Team:
         self.ties = 0
         self.final_place = ""
 
-
-#gets the total numver of players in a given season
-def get_numberofowners() :
-	owners_url = 'https://fantasy.nfl.com/league/' + leagueID + '/history/' + season + '/owners'
-	owners_page = requests.get(owners_url)
-	owners_html = owners_page.text
-	#owners_page.close()
-	owners_soup = bs(owners_html, 'html.parser')
-	number_of_owners = len(owners_soup.find_all('tr', class_ = re.compile('team-')))
-	return number_of_owners
-
-number_of_owners = get_numberofowners() #number of teams in the league
-
-def create_teams():
+def create_teams(season):
     owners_url = 'https://fantasy.nfl.com/league/' + leagueID + '/history/' + season + '/owners'
     owners_page = requests.get(owners_url)
     owners_html = owners_page.text
@@ -52,12 +39,15 @@ def create_teams():
         team_html = team_page.text
         team_soup = bs(team_html, 'html.parser')
         team_page.close()
-        
+        team.rank = int(team_soup.find('ul', class_ = 'teamStats').find_all('li')[0].find('strong').text)
         # get W-L-T
         record = team_soup.find('ul', class_ = 'teamStats').find_all('li')[1].find('span').text.split('-')
         team.wins = int(record[0])
         team.losses = int(record[1])
         team.ties = int(record[2])
+        #get final place
+        team.final_place = team_soup.find('li', class_ = 'seasonResult').find('strong').text
+        
         # get owner id
         owner = team_soup.find('span', class_ = re.compile('userId-'))
         if owner:
@@ -65,32 +55,22 @@ def create_teams():
         teams[team_id] = team
                                    
 
+    if not os.path.isdir('./' + league_name + '-League-History') :
+        os.mkdir('./' + league_name + '-League-History')
+	
 
+    path = './' + league_name + '-League-History/' + season #the path of the folder where the weekly csv files are stored
+
+    with open('./' + league_name +'-League-History/' + season + '.csv', 'w', newline='') as f :
+        writer = csv.writer(f)
+        writer.writerow(['Owner ID', 'Owner', 'Team ID', 'Team Name', 'Rank', 'Wins', 'Losses', 'Ties', 'Final Place']) #writes header as the first line in the new csv file
+        for team in teams:
+            writer.writerow([teams[team].owner_id, teams[team].owner, teams[team].team_id, teams[team].team_name, teams[team].rank, teams[team].wins, teams[team].losses, teams[team].ties, teams[team].final_place])
     return teams
 
+for season in range(2012, 2024 + 1):
+    print(season)
+    season = str(season)
+    teams = create_teams(season)
 
-teams = create_teams()
-for team in teams:
-    print(teams[team].team_id) 
-    print(teams[team].team_name)
-    print(teams[team].owner)
-    print(teams[team].rank)
-    print(teams[team].wins)
-    print(teams[team].losses)
-    print(teams[team].ties)
-    print(teams[team].owner_id)
-    print()
 
-# if not os.path.isdir('./' + league_name + '-League-History') :
-# 	if(input('No folder named ' + league_name + '-League-History found would you like to create a new folder with that name y/n?' ) == 'y') :
-# 		os.mkdir('./' + league_name + '-League-History')
-# 	else :
-# 		exit()
-
-# path = './' + league_name + '-League-History/' + season #the path of the folder where the weekly csv files are stored
-
-# with open('./' + league_name +'-League-History/' + season + '.csv', 'w', newline='') as f :
-#     writer = csv.writer(f)
-#     writer.writerow(['Team ID', 'Team Name', 'Owner', 'Rank', 'W', 'L', 'T']) #writes header as the first line in the new csv file
-#     for team in teams:
-#         writer.writerow([teams[team].team_id, teams[team].team_name, teams[team].owner, teams[team].rank, teams[team].wins, teams[team].losses, teams[team].ties])

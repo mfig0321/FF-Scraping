@@ -1,13 +1,13 @@
-Team ID,Team Name,Owner,Rank,W,L,T
-1,Westchester United,santiago,8,6,7,0
-4,ALpocalypse Now,alex,1,9,4,0
-8,Come Here Snowflake,quino,6,7,6,0
-6,BigDicksNoWhammies,Marlone,11,3,10,0
-7,Azteks,Isaac,9,6,7,0
-10,I'm Nine,Jovan,10,5,8,0
-3,MoBB,Charlie,5,7,6,0
-2,Sweetwater Football Team,Mike,12,2,11,0
-5,Gladiators,Javier,7,7,6,0
-12,Mother of Touchdowns,Monica,3,9,4,0
-9,Tompa Bay Pats,Daniel,2,9,4,0
-11,Monsters of the Gridiron,Fabian,4,8,5,0
+Owner ID,Owner,Team ID,Team Name,Rank,Wins,Losses,Ties,Final Place
+36047,santiago,1,Westchester United,8,6,7,0,7th Place
+41330,alex,4,ALpocalypse Now,1,9,4,0,2nd Place
+66048,quino,8,Come Here Snowflake,6,7,6,0,5th Place
+108138,Marlone,6,BigDicksNoWhammies,11,3,10,0,10th Place
+108610,Isaac,7,Azteks,9,6,7,0,9th Place
+126705,Jovan,10,I'm Nine,10,5,8,0,12th Place
+309543,Charlie,3,MoBB,5,7,6,0,3rd Place
+476752,Mike,2,Sweetwater Football Team,12,2,11,0,11th Place
+1465323,Javier,5,Gladiators,7,7,6,0,8th Place
+2291835,Monica,12,Mother of Touchdowns,3,9,4,0,1st Place
+5203445,Daniel,9,Tompa Bay Pats,2,9,4,0,4th Place
+9856334,Fabian,11,Monsters of the Gridiron,4,8,5,0,6th Place
