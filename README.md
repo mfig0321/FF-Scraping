@@ -1,10 +1,10 @@
 # FF-Scraping
 
-A Python project for scraping and analyzing fantasy football data.
+A Python project for scraping and analyzing fantasy football data. Only for NFL Fantasy Leagues.
 
 ## Features
 
-- Scrapes regular season fantasy football data
+- Scrapes regular season fantasy.nfl.com football data
 - Supports single and combined season scraping
 - Outputs data for further analysis
 
@@ -14,7 +14,7 @@ A Python project for scraping and analyzing fantasy football data.
 - `reg_season_scraper_range.py`: Scrapes data for all seasons between range from input start and end.
 - `reg_season_range_combined.py`: Combines and processes scraped data from seasons in range from input start and end.
 - `requirements.txt`: Python dependencies
-- `Out of Your League-League-History/`: Example or output data directory taken from input leage name.
+- `Out of Your League-League-History/`: Example or output data directory taken from input league name.
 
 ## Setup
 
@@ -82,7 +82,7 @@ A Python project for scraping and analyzing fantasy football data.
 - Add other stats
   - Total points scored for
   - Total point scored against
-  - What ever the community request
+  - What ever the community requests
 ## License
 
 MIT
