@@ -54,31 +54,35 @@ A Python project for scraping and analyzing fantasy football data.
 
 ## Notes
 
-- Update script parameters as needed for your league or data source.
-  
-  - All Scipts will ask for these input.
-    - Will ask for input for league_id.
-    - Will ask for input for league_name
-    
-      - reg_season_scraper_single:
-        - Will ask for inout for target season (e.g. 2012)
-        - Will output csv with name {season}.csv in Single_Script/Seasons directory
-      - reg_season_scraper_range:
-        - Will ask for start season year (e.g. 2012)
-        - Will ask for end season year (e.g. 2024)
-        - Will output a csv for each year in range of start and end years in directory Range_Script directory
-      - reg_season_range_combined:
-        - Will ask for start season year (e.g. 2012)
-        - Will ask for end season year (e.g. 2024)
-        - Will out put a single csv with combinbed reg season totals for range of start and end years. In directory Range_Combined_Script
-  
+- All Scipts will ask for these input.
+  - Will ask for input for league_id.
+  - Will ask for input for league_name
+
+    - reg_season_scraper_single:
+      - Will ask for inout for target season (e.g. 2012)
+      - Will output csv with name {season}.csv in Single_Script/Seasons directory
+    - reg_season_scraper_range:
+      - Will ask for start season year (e.g. 2012)
+      - Will ask for end season year (e.g. 2024)
+      - Will output a csv for each year in range of start and end years in directory Range_Script directory
+    - reg_season_range_combined:
+      - Will ask for start season year (e.g. 2012)
+      - Will ask for end season year (e.g. 2024)
+      - Will out put a single csv with combinbed reg season totals for range of start and end years. In directory Range_Combined_Script
+
 ## Credits
+
 - github username: sawyercole
 - name: Sawyer Cole
   - used his  csvWriting script from https://github.com/sawyercole/FF-Scraping as template
 
 ## TODO
-- add post season stats
+
+- Add post season stats
+- Add other stats
+  - Total points scored for
+  - Total point scored against
+  - What ever the community request
 ## License
 
 MIT
