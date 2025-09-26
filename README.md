@@ -76,6 +76,9 @@ A Python project for scraping and analyzing fantasy football data.
 - github username: sawyercole
 - name: Sawyer Cole
   - used his  csvWriting script from https://github.com/sawyercole/FF-Scraping as template
+
+## TODO
+- add post season stats
 ## License
 
 MIT
