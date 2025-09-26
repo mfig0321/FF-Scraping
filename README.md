@@ -72,7 +72,10 @@ A Python project for scraping and analyzing fantasy football data.
         - Will ask for end season year (e.g. 2024)
         - Will out put a single csv with combinbed reg season totals for range of start and end years. In directory Range_Combined_Script
   
-
+## Credits
+- github username: sawyercole
+- name: Sawyer Cole
+  - used his  csvWriting script from https://github.com/sawyercole/FF-Scraping as template
 ## License
 
 MIT
