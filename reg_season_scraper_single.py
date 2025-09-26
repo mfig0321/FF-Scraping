@@ -4,9 +4,9 @@ from bs4 import BeautifulSoup as bs
 from urllib.request import urlopen
 import re
 import requests
-leagueID = str(943463)
-league_name = 'Out of Your League'
-
+league_id = input("Enter league ID (e.g. 943463): ")
+league_name = input("Enter league name (e.g. Out of Your League): ")
+season = str(input("Enter season (e.g. 2023): "))
 
 class Team:
     def __init__(self, team_id):
@@ -21,7 +21,7 @@ class Team:
         self.final_place = ""
 
 def create_teams(season):
-    owners_url = 'https://fantasy.nfl.com/league/' + leagueID + '/history/' + season + '/owners'
+    owners_url = 'https://fantasy.nfl.com/league/' + league_id + '/history/' + season + '/owners'
     owners_page = requests.get(owners_url)
     owners_html = owners_page.text
     owners_page.close()
@@ -53,24 +53,40 @@ def create_teams(season):
         if owner:
             team.owner_id = owner['class'][1].split('-')[1]
         teams[team_id] = team
-                                   
 
-    if not os.path.isdir('./' + league_name + '-League-History') :
-        os.mkdir('./' + league_name + '-League-History')
-	
-
-    path = './' + league_name + '-League-History/' + season #the path of the folder where the weekly csv files are stored
-
-    with open('./' + league_name +'-League-History/' + season + '.csv', 'w', newline='') as f :
-        writer = csv.writer(f)
-        writer.writerow(['Owner ID', 'Owner', 'Team ID', 'Team Name', 'Rank', 'Wins', 'Losses', 'Ties', 'Final Place']) #writes header as the first line in the new csv file
-        for team in teams:
-            writer.writerow([teams[team].owner_id, teams[team].owner, teams[team].team_id, teams[team].team_name, teams[team].rank, teams[team].wins, teams[team].losses, teams[team].ties, teams[team].final_place])
     return teams
 
-for season in range(2012, 2024 + 1):
-    print(season)
-    season = str(season)
-    teams = create_teams(season)
+teams = create_teams(season)
+print(f"League: {league_name}, Season: {season}")
+print()
 
+for team in teams:
+    print(f"Owner ID: {teams[team].owner_id}")
+    print(f"Owner: {teams[team].owner}")
+    print(f"Team ID: {teams[team].team_id}")
+    print(f"Team Name: {teams[team].team_name}")
+    print(f"Rank: {teams[team].rank}")
+    print(f"Wins: {teams[team].wins}")
+    print(f"Losses: {teams[team].losses}")
+    print(f"Ties: {teams[team].ties}")
+    print(f"Final Place: {teams[team].final_place}")
+    print()
 
+path = './' + league_name + '-League-History/'
+
+if not os.path.isdir(path) :
+    os.mkdir(path)
+
+if not os.path.isdir(path + 'Single_Script/'):
+    os.mkdir(path + 'Single_Script/')
+path = path + 'Single_Script/'
+
+if not os.path.isdir(path + 'Seasons/'):
+    os.mkdir(path + 'Seasons/')
+
+with open(path + f'Seasons/{season}.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['Owner ID', 'Owner', 'Team ID', 'Team Name', 'Rank', 'Wins', 'Losses', 'Ties', 'Final Place']) #writes header as the first line in the new csv file
+    for team in teams:
+        writer.writerow([teams[team].owner_id, teams[team].owner, teams[team].team_id, teams[team].team_name, teams[team].rank, teams[team].wins, teams[team].losses, teams[team].ties, teams[team].final_place])
+print(f"Data saved to {path}Seasons/{season}.csv")

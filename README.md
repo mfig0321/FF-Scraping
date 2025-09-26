@@ -10,12 +10,11 @@ A Python project for scraping and analyzing fantasy football data.
 
 ## Project Structure
 
-- `reg_season_scrapper_single.py`: Scrapes data for a single season
-- `reg_season_scrapper_all.py`: Scrapes data for all seasons
-- `reg_season_all_combined.py`: Combines and processes scraped data
-- `reg_season_toal.py`: Additional data processing (custom logic)
+- `reg_season_scraper_single.py`: Scrapes data for a single season
+- `reg_season_scraper_range.py`: Scrapes data for all seasons between range from input start and end.
+- `reg_season_range_combined.py`: Combines and processes scraped data from seasons in range from input start and end.
 - `requirements.txt`: Python dependencies
-- `Out of Your League-League-History/`: Example or output data directory
+- `Out of Your League-League-History/`: Example or output data directory taken from input leage name.
 
 ## Setup
 
@@ -40,23 +39,39 @@ A Python project for scraping and analyzing fantasy football data.
 
 - To scrape a single season:
 	```sh
-	python reg_season_scrapper_single.py
+	python reg_season_scraper_single.py
 	```
 
-- To scrape all seasons:
+- To scrape seasons within range:
 	```sh
-	python reg_season_scrapper_all.py
+	python reg_season_scraper_range.py
 	```
 
 - To combine and process data:
 	```sh
-	python reg_season_all_combined.py
+	python reg_season_range_combined.py
 	```
 
 ## Notes
 
 - Update script parameters as needed for your league or data source.
-- Output files will be saved in the project directory or specified folders.
+  
+  - All Scipts will ask for these input.
+    - Will ask for input for league_id.
+    - Will ask for input for league_name
+    
+      - reg_season_scraper_single:
+        - Will ask for inout for target season (e.g. 2012)
+        - Will output csv with name {season}.csv in Single_Script/Seasons directory
+      - reg_season_scraper_range:
+        - Will ask for start season year (e.g. 2012)
+        - Will ask for end season year (e.g. 2024)
+        - Will output a csv for each year in range of start and end years in directory Range_Script directory
+      - reg_season_range_combined:
+        - Will ask for start season year (e.g. 2012)
+        - Will ask for end season year (e.g. 2024)
+        - Will out put a single csv with combinbed reg season totals for range of start and end years. In directory Range_Combined_Script
+  
 
 ## License
 

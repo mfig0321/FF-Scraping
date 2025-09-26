@@ -4,9 +4,11 @@ from bs4 import BeautifulSoup as bs
 from urllib.request import urlopen
 import re
 import requests
-leagueID = str(943463)
-league_name = 'Out of Your League'
+league_id = input("Enter league ID (e.g. 943463): ")
+league_name = input("Enter league name (e.g. Out of Your League): ")
 teams = {}
+season_start = input("Enter season start (e.g. 2012): ")
+season_end = input("Enter season end (e.g. 2024): ")
 
 class Team:
     def __init__(self, owner_id):
@@ -18,7 +20,7 @@ class Team:
         self.ties = 0
 
 def create_teams(season):
-    owners_url = 'https://fantasy.nfl.com/league/' + leagueID + '/history/' + season + '/owners'
+    owners_url = 'https://fantasy.nfl.com/league/' + league_id + '/history/' + season + '/owners'
     owners_page = requests.get(owners_url)
     owners_html = owners_page.text
     owners_page.close()
@@ -51,25 +53,38 @@ def create_teams(season):
             teams[owner_id].wins += team.wins
             teams[owner_id].losses += team.losses
             teams[owner_id].ties += team.ties   
+            teams[owner_id].team_name = team.team_name
 
     return teams
 
-for season in range(2012, 2024 + 1):
-    print(season)
+for season in range(int(season_start), int(season_end) + 1):
+    print(f'Loading season {season}')
     season = str(season)
-    teams = create_teams(season)
+    teams_all = create_teams(season)
 
-if not os.path.isdir('./' + league_name + '-League-History') :
-    os.mkdir('./' + league_name + '-League-History')
-	
+path = './' + league_name + '-League-History/'
+if not os.path.isdir(path) :
+    os.mkdir(path)	
 
-    path = './' + league_name + '-League-History/' + season #the path of the folder where the weekly csv files are stored
+path = path + 'Range_Combined_Script/'
+if not os.path.isdir(path): 
+    os.mkdir(path)
 
-with open('./' + league_name +'-League-History/totals_reg_season.csv', 'w', newline='') as f :
+with open(path + f'{season_start}-{season_end}.csv', 'w', newline='') as f :
     writer = csv.writer(f)
-    writer.writerow(['Owner ID', 'Owner', 'Team Name', 'Wins', 'Losses', 'Ties']) #writes header as the first line in the new csv file
-    for team in teams:
-        writer.writerow([teams[team].owner_id, teams[team].owner, teams[team].team_name, teams[team].wins, teams[team].losses, teams[team].ties])
-        
+    writer.writerow(['Owner ID',
+                     'Owner',
+                     'Team Name',
+                     'Wins', 'Losses',
+                     'Losses',
+                     'Ties']) #writes header as the first line in the new csv file
+    for team in teams_all:
+        writer.writerow([teams_all[team].owner_id,
+                         teams_all[team].owner,
+                         teams_all[team].team_name,
+                         teams_all[team].wins,
+                         teams_all[team].losses,
+                         teams_all[team].ties])
+    print(f'File saved to {path + f"{season_start}-{season_end}.csv"}')
 
 
