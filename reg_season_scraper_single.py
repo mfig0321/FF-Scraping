@@ -47,7 +47,7 @@ def create_teams(season):
         team.ties = int(record[2])
         #get final place
         team.final_place = team_soup.find('li', class_ = 'seasonResult').find('strong').text
-        
+
         # get owner id
         owner = team_soup.find('span', class_ = re.compile('userId-'))
         if owner:

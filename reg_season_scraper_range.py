@@ -54,7 +54,7 @@ def create_teams(season):
         if owner:
             team.owner_id = owner['class'][1].split('-')[1]
         teams[team_id] = team
-                                   
+
 
     return teams
 
@@ -71,7 +71,7 @@ for season in range(int(season_start), int(season_end) + 1):
     print(f'Loading season {season}')
     season = str(season)
     teams = create_teams(season)
-    
+
     with open(path + f'{season}.csv', 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['Owner ID',

@@ -40,7 +40,7 @@ def create_teams(season):
        # get team name and owner name
         team.team_name = teamWrap.find('a', class_ = 'teamName').text.strip()
         team.owner = teamWrap.find('td', class_ = 'teamOwnerName').text.strip()
-    
+
         # get W-L-T
         record = team_soup.find('ul', class_ = 'teamStats').find_all('li')[1].find('span').text.split('-')
         team.wins = int(record[0])
@@ -86,5 +86,4 @@ with open(path + f'{season_start}-{season_end}.csv', 'w', newline='') as f :
                          teams_all[team].losses,
                          teams_all[team].ties])
     print(f'File saved to {path + f"{season_start}-{season_end}.csv"}')
-
 
