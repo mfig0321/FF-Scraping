@@ -59,7 +59,7 @@ A Python project for scraping and analyzing fantasy football data. Only for NFL 
   - Will ask for input for league_name
 
     - reg_season_scraper_single:
-      - Will ask for inout for target season (e.g. 2012)
+      - Will ask for input for target season (e.g. 2012)
       - Will output csv with name {season}.csv in Single_Script/Seasons directory
     - reg_season_scraper_range:
       - Will ask for start season year (e.g. 2012)

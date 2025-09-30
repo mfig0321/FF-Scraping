@@ -1,7 +1,6 @@
 import csv
 import os
 from bs4 import BeautifulSoup as bs
-from urllib.request import urlopen
 import re
 import requests
 league_id = input("Enter league ID (e.g. 943463): ")
